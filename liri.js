@@ -132,6 +132,7 @@ function myOMDB() {
             console.log("Actors: "+body.Actors)
             console.log("");
             console.log("");
+        return;
         };     
     });
 };
