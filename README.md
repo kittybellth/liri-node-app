@@ -1,13 +1,13 @@
 # liri-node-app
 
-# Purpose
+### Purpose
 To build an app by using the CLI to determines to send a request to the Twitter, Spotify or IMDB APIs. 
 
 
-Technology
- # NodeJS
+# Technology
+ ## NodeJS
 
-NPM
+## NPM
 * `tweeter`
 * `Spotify`
 * `request`
@@ -17,7 +17,7 @@ NPM
  
  * if you have a twitter app you should type the necessary keys and tokens into `keys.js` to run the `my-tweets` command properly.
  
-## Each command should run the result as following results
+### Each command should run the result as following results
 
 1. `node liri.js my-tweets`
 
