@@ -4,10 +4,10 @@
 To build an app by using the CLI to determines to send a request to the Twitter, Spotify or IMDB APIs. 
 
 
-# Technology
- ## NodeJS
+### Technology
+ * `NodeJS`
 
-## NPM
+### NPM
 * `tweeter`
 * `Spotify`
 * `request`
