@@ -1,6 +1,6 @@
 # liri-node-app
 
-// Purpose
+# Purpose
 To build an app by using the CLI to determines to send a request to the Twitter, Spotify or IMDB APIs. 
 
 
@@ -10,9 +10,14 @@ Technology
 NPM
 * `tweeter`
 * `Spotify`
-* `OMDB`
+* `request`
 
-### What Each Command Should Do
+### How to use this app
+ * Once you git pull you should run this file `liri.js` on Terminal or Bash then install npm packages included inside    package.json.
+ 
+ * if you have a twitter app you should type the necessary keys and tokens into `keys.js` to run the `my-tweets` command properly.
+ 
+## Each command should run the result as following results
 
 1. `node liri.js my-tweets`
 
@@ -41,12 +46,9 @@ NPM
        * Language of the movie.
        * Plot of the movie.
        * Actors in the movie.
-       * Rotten Tomatoes URL.
      ```
 
-   * If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
-     * If you haven't watched "Mr. Nobody," then you should: <http://www.imdb.com/title/tt0485947/>
-     * It's on Netflix!
+   * If you don't type a movie in, the program will output data for the movie 'Mr. Nobody.'
 
 4. `node liri.js do-what-it-says`
    * Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
