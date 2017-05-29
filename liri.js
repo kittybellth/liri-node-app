@@ -6,7 +6,7 @@ var title = "";
 var Twitter = require('twitter');
 var spotify = require('spotify');
 var fs = require("fs");
-
+var request = require("request");
 
 function initApp(){
     if (nodeArg[2]){
@@ -17,31 +17,42 @@ function initApp(){
         } else if (nodeArg[2] === "spotify-this-song"){
             console.log("");
             console.log("Welcome to Spotify!!");
-            if(nodeArg[3]){
-                for(i = 3; i<nodeArg.length; i++){
-                    argArr.push(nodeArg[i]);
+                if(nodeArg[3]){
+                    for(i = 3; i<nodeArg.length; i++){
+                        argArr.push(nodeArg[i]);
+                    };
+                        title = argArr.join(" ");
+                        console.log("Song name: "+title);
+                        mySpotify(0);
+                        fs.appendFile("log.txt", nodeArg[2]+", "+title+"\n", function(err) {});
+                        return;
+                } else if(nodeArg[3] === undefined){
+                    title = "The Sign";
+                    console.log("Song name: "+title);
+                    mySpotify(4);
+                    fs.appendFile("log.txt", nodeArg[2]+"\n", function(err) {});
+                    return;
                 };
-                title = argArr.join(" ");
-                console.log("Song name : "+title);
-                mySpotify(0);
-                fs.appendFile("log.txt", nodeArg[2]+", "+title+"\n", function(err) {});
-                return;
-            } else if(nodeArg[3] === undefined){
-                title = "The Sign";
-                console.log("Song name : "+title);
-                mySpotify(4);
-                fs.appendFile("log.txt", nodeArg[2]+"\n", function(err) {});
-                return;
-            };
             return;
         } else if (nodeArg[2] === "movie-this") {
             console.log("");
-            console.log("");
-            console.log("");
-            console.log("Sorry this function is not available");
-            console.log("");
-            console.log("");
-            console.log("");
+            console.log("Welcome to OMDB!!");
+                if(nodeArg[3]){
+                    for(i = 3; i<nodeArg.length; i++){
+                        argArr.push(nodeArg[i]);
+                    };
+                        title = argArr.join("+");
+                        console.log("Movie name: "+title);
+                        myOMDB();
+                        fs.appendFile("log.txt", nodeArg[2]+", "+title+"\n", function(err) {});
+                        return;
+                } else if(nodeArg[3] === undefined){
+                    title = "mr+nobody";
+                    console.log("Movie name: "+title);
+                    myOMDB();
+                    fs.appendFile("log.txt", nodeArg[2]+"\n", function(err) {});
+                    return;
+                };
             return;
         } else if (nodeArg[2] === "do-what-it-says") {
             random();
@@ -101,4 +112,26 @@ function random() {
   initApp();
   return;
   });
+};
+
+function myOMDB() {
+    request('http://www.omdbapi.com/?t='+ title +'&apikey=40e9cece', function (error, response, body) {
+        if (error){
+            console.log('error:', error);
+        } else if (!error && response.statusCode === 200){
+            var body = JSON.parse(body);
+            console.log("***************************************************");
+            console.log("");
+            console.log("");
+            console.log("Title: "+body.Title);
+            console.log("Released: "+body.Released);
+            console.log("IMDB Rating: "+body.imdbRating);
+            console.log("Country: "+body.Country);
+            console.log("Language: "+body.Language);
+            console.log("Plot: "+body.Plot);
+            console.log("Actors: "+body.Actors)
+            console.log("");
+            console.log("");
+        };     
+    });
 };
